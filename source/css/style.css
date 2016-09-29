@@ -39,4 +39,13 @@ html {
 .icon-twitter:before {
   content: ""; }
 
-/*# sourceMappingURL=style.css.map */
+ul {
+  list-style: none outside;
+  margin: 0;
+  padding: 0; }
+  ul li {
+    color: #ff4c94; }
+
+h1 {
+  font-size: 100px;
+  color: #fc0; }
