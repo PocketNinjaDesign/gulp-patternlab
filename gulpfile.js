@@ -66,7 +66,7 @@ gulp.task('pl-copy:styleguide-css', function(){
 gulp.task('p1-build:sass', function() {
   return gulp.src(path.resolve(paths().source.scss, 'style.scss'))
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest(path.resolve(paths().source.css)));
+    .pipe(gulp.dest(path.resolve(paths().public.css)));
 });
 
 
@@ -157,7 +157,7 @@ function reloadCSS() {
 }
 
 function watch() {
-  gulp.watch(path.resolve(paths().source.scss, '**/*.scss'), { awaitWriteFinish: true }).on('change', gulp.series('p1-build:sass'));
+  gulp.watch(path.resolve(paths().source.scss, '**/*.scss'), { awaitWriteFinish: true }).on('change', gulp.series('p1-build:sass', reloadCSS));
   gulp.watch(path.resolve(paths().source.css, '**/*.css'), { awaitWriteFinish: true }).on('change', gulp.series('pl-copy:css', reloadCSS));
   gulp.watch(path.resolve(paths().source.styleguide, '**/*.*'), { awaitWriteFinish: true }).on('change', gulp.series('pl-copy:styleguide', 'pl-copy:styleguide-css', reloadCSS));
 
